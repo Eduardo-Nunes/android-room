@@ -12,6 +12,6 @@ data class Word (
         val id: Int,
 
         @NonNull
-        @ColumnInfo(name = "word")
+        @ColumnInfo(name = "word_value")
         val mWord: String
 )
