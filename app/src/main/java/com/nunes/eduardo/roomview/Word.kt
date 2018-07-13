@@ -14,4 +14,12 @@ data class Word (
         @NonNull
         @ColumnInfo(name = "word_value")
         val mWord: String
-)
+) {
+        override fun equals(other: Any?): Boolean {
+                return if (other is Word) {
+                        other.id == this.id || other.mWord == this.mWord
+                } else {
+                        false
+                }
+        }
+}
