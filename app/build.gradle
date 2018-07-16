@@ -29,6 +29,13 @@ ext {
     jUnitVersion = '4.12'
     runnerVersion = '1.0.2'
     expressoVersion = '3.0.2'
+    coroutinesVersion = '0.21'
+}
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
 }
 
 dependencies {
@@ -49,4 +56,8 @@ dependencies {
     // Lifecycle components
     implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
     kapt "android.arch.lifecycle:compiler:$archLifecycleVersion"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 }
