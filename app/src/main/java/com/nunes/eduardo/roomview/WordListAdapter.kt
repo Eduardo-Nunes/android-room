@@ -18,15 +18,13 @@ class WordListAdapter(context: Context) : RecyclerView.Adapter<WordListAdapter.W
     }
 
     override fun getItemCount(): Int {
-        return mWords?.size ?: 0
+        return mWords?.size ?: 1
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
-        if (itemCount > 0) {
-            mWords?.get(position)?.let { holder.onBind(it) }
-        } else {
-            holder.noData()
-        }
+        mWords?.get(position)?.let {
+            holder.onBind(it)
+        } ?: holder.noData()
     }
 
     fun setWords(words: List<Word>) {
