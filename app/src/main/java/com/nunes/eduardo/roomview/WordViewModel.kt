@@ -3,14 +3,16 @@ package com.nunes.eduardo.roomview
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
+import kotlinx.coroutines.experimental.runBlocking
 
-class WordViewModel : AndroidViewModel{
-    private var mRepository: WordRepository
-    private var mAllWords: LiveData<List<Word>>
+class WordViewModel(application: Application) : AndroidViewModel(application) {
+    private var mRepository: WordRepository = WordRepository(application)
+    private lateinit var mAllWords: LiveData<List<Word>>
 
-    constructor(application: Application) : super(application) {
-        mRepository = WordRepository(application)
-        mAllWords = mRepository.getAllWords()
+    init {
+        runBlocking {
+            mAllWords = mRepository.getAllWords()
+        }
     }
 
     fun insert(word: Word){

@@ -27,7 +27,7 @@ class WordListAdapter(context: Context) : RecyclerView.Adapter<WordListAdapter.W
         } ?: holder.noData()
     }
 
-    fun setWords(words: List<Word>) {
+    fun setWords(words: List<Word>?) {
         mWords = words
         notifyDataSetChanged()
     }

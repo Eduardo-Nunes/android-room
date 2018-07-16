@@ -31,16 +31,14 @@ abstract class WordRoomDatabase : RoomDatabase() {
         @JvmStatic
         private val sRoomDatabaseCallback = object : RoomDatabase.Callback() {
             override fun onOpen(db: SupportSQLiteDatabase) {
-//                synchronized(WordRoomDatabase::class.java) {
+                synchronized(WordRoomDatabase::class.java) {
                     super.onOpen(db)
                     launch {
                         INSTANCE?.wordDao()?.let {
                             it.deleteAllWords()
-                            it.insertword(Word("Hello"))
-                            it.insertword(Word("Word"))
                         }
                     }
-//                }
+                }
             }
         }
     }

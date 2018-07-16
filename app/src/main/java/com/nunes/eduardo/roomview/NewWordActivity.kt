@@ -7,8 +7,6 @@ import kotlinx.android.synthetic.main.activity_new_word.*
 import android.text.TextUtils
 import android.content.Intent
 
-
-
 const val EXTRA_REPLY: String = "com.nunes.eduardo.roomview.REPLY"
 class NewWordActivity : AppCompatActivity() {
 
