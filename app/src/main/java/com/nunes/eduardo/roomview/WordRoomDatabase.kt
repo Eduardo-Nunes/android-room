@@ -23,9 +23,5 @@ abstract class WordRoomDatabase : RoomDatabase() {
             }
             return INSTANCE as WordRoomDatabase
         }
-
-
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.nunes.eduardo.roomview
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
 
@@ -19,5 +20,5 @@ interface WordDao {
     fun deleteAllWords()
 
     @Query("SELECT * from word_table ORDER BY word_value ASC")
-    fun getAllWords(): List<Word>
+    fun getAllWords(): LiveData<List<Word>>
 }
