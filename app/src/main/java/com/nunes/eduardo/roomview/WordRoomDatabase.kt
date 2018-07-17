@@ -34,9 +34,7 @@ abstract class WordRoomDatabase : RoomDatabase() {
                 synchronized(WordRoomDatabase::class.java) {
                     super.onOpen(db)
                     launch {
-                        INSTANCE?.wordDao()?.let {
-                            it.deleteAllWords()
-                        }
+                        INSTANCE?.wordDao()?.deleteAllWords()
                     }
                 }
             }

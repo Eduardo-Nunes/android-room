@@ -22,4 +22,10 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
     fun getAllWords(): LiveData<List<Word>> {
         return mAllWords
     }
+
+    fun clearWords() {
+        runBlocking {
+            mRepository.clearAll()
+        }
+    }
 }

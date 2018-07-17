@@ -2,10 +2,7 @@ package com.nunes.eduardo.roomview
 
 import android.app.Application
 import android.arch.lifecycle.LiveData
-import kotlinx.coroutines.experimental.DefaultDispatcher
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.runBlocking
-import kotlinx.coroutines.experimental.withContext
+import kotlinx.coroutines.experimental.*
 
 class WordRepository(application: Application){
     private var mWordDao: WordDao
@@ -21,7 +18,6 @@ class WordRepository(application: Application){
 
     }
 
-
     suspend fun getAllWords(): LiveData<List<Word>> {
         return withContext(DefaultDispatcher) {
             mWordDao.getAllWords()
@@ -34,5 +30,10 @@ class WordRepository(application: Application){
         }
     }
 
+    fun clearAll(){
+        launch {
+            mWordDao.deleteAllWords()
+        }
+    }
 
 }
